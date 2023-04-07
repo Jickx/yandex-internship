@@ -4,7 +4,7 @@ from collections import Counter
 def check_plagiarism(alice, zeliboba) -> str:
     alice, zeliboba = list(alice), list(zeliboba)
     alice_ctr = dict(Counter(alice))
-    result = [None for i in range(len(alice))]
+    result = [None for _ in range(len(alice))]
     i = 0
     while i < len(alice):
         if zeliboba[i] == alice[i]:
