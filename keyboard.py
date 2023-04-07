@@ -19,4 +19,3 @@ for i in range(len(symb_flow)):
 
 with open('output.txt', 'w') as output:
     output.write(str(ctr))
-
