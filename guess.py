@@ -1,31 +1,38 @@
-with open('input.txt') as input:
-    lines = input.read().splitlines()
-    S = [i for i in lines[0]]
-    Q = [i for i in lines[1]]
+def check_words(S, Q):
+    S = list(S)
+    Q = list(Q)
 
-for i in range(len(Q)):
-    for j in range(len(S)):
+    for i in range(len(Q)):
         if Q[i] == S[i]:
             S[i] = None
             Q[i] = 'correct'
-            break
-        elif Q[j] == S[j]:
-            S[j] = None
-            Q[j] = 'correct'
-        elif S[j] == Q[i]:
+
+    for i in range(len(Q)):
+        S = get_counter(S)
+
+        if Q[i] in S:
             S[j] = None
             Q[i] = 'present'
             break
-for i in range(len(Q)):
-    if len(Q[i]) == 1:
-        Q[i] = 'absent'
-            
+        
+    for i in range(len(Q)):
+        if len(Q[i]) == 1:
+            Q[i] = 'absent'
+    
+    return Q
 
-print(S)
-print(*Q, sep='\n')
+def get_counter(S):
+    pass
     
 
 
-# with open('output.txt', 'w') as output:
-#     for i in output_list:
-#         output.write(i + "\n")
+assert check_words('ABCD', 'AFGD') == ['correct', 'absent', 'absent', 'correct']
+assert check_words('CLEVER', 'CREVRS') == ['correct', 'present', 'correct', 'correct', 'absent', 'absent']
+assert check_words('ABCD', 'CACD') == ['absent', 'present', 'correct', 'correct']
+assert check_words('A', 'C') == ['absent']
+assert check_words('A', 'A') == ['correct']
+assert check_words('AAAABB', 'BBBBCC') == ['present', 'present', 'absent', 'absent', 'absent', 'absent']
+
+
+
+
