@@ -4,7 +4,7 @@ import os
 # mode = input()
 
 
-path = os.path.join('input', 'air_con')
+path = os.path.join('input', __name__)
 with open(path, 'r') as f:
     input_lines = f.read().strip().split('\n\n\n')
 
