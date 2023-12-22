@@ -7,8 +7,8 @@ def count_trains(a: int, b: int, n: int, m: int) -> None:
     b_min = m + b * (m - 1)
     b_max = m + b * (m + 1)
 
-    t_min = a_min if a_min > b_min else b_min
-    t_max = a_max if a_max < b_max else b_max
+    t_min = max(a_min, b_min)
+    t_max = min(a_max, b_max)
 
     if t_min > t_max:
         print('-1')
