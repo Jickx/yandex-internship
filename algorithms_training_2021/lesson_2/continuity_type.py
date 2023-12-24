@@ -2,65 +2,34 @@ from algorithms_training_2021.lesson_2.get_input import get_input
 
 
 def is_constant(l: list) -> bool:
-    prev = l[0]
-    for i in range(1, len(l)):
-        if l[i] != prev:
-            return False
-    return True
+    return all(l[0] == l[i] for i in range(1, len(l)))
 
 
 def is_ascending(l: list) -> bool:
-    prev = l[0]
-    for i in range(1, len(l)):
-        if l[i] < prev:
-            return False
-        prev = l[i]
-    return True
+    return all(x <= y for x, y in zip(l, l[1:]))
 
 
 def is_weakly_ascending(l: list) -> bool:
-    prev = l[0]
-    for i in range(1, len(l)):
-        if prev == l[i]:
-            return True
-        prev = l[i]
-    return False
+    return any(x == y for x, y in zip(l, l[1:]))
 
 
 def is_descending(l: list) -> bool:
-    prev = l[0]
-    for i in range(1, len(l)):
-        if l[i] > prev:
-            return False
-        prev = l[i]
-    return True
+    return all(x >= y for x, y in zip(l, l[1:]))
 
 
 def is_weakly_descending(l: list) -> bool:
-    prev = l[0]
-    for i in range(1, len(l)):
-        if prev == l[i]:
-            return True
-        prev = l[i]
-    return False
+    return any(x == y for x, y in zip(l, l[1:]))
 
 
 def continuity_type(l: list[int]) -> None:
     if is_constant(l):
         cont_type = 'CONSTANT'
     elif is_ascending(l):
-        if is_weakly_ascending(l):
-            cont_type = 'WEAKLY ASCENDING'
-        else:
-            cont_type = 'ASCENDING'
+        cont_type = 'WEAKLY ASCENDING' if is_weakly_ascending(l) else 'ASCENDING'
     elif is_descending(l):
-        if is_weakly_descending(l):
-            cont_type = 'WEAKLY DESCENDING'
-        else:
-            cont_type = 'DESCENDING'
+        cont_type = 'WEAKLY DESCENDING' if is_weakly_descending(l) else 'DESCENDING'
     else:
         cont_type = 'RANDOM'
-
     print(cont_type)
 
 
