@@ -2,11 +2,7 @@ from algorithms_training_2021.lesson_2.get_input import get_input
 
 
 def find_bigger_neighbours(arr: list[int]) -> int:
-    ctr = 0
-    for i in range(1, len(arr) - 1):
-        if arr[i] > arr[i + 1] and arr[i] > arr[i - 1]:
-            ctr += 1
-    return ctr
+    return sum(1 for i in range(1, len(arr) - 1) if arr[i - 1] < arr[i] > arr[i + 1])
 
 
 # print(find_bigger_neighbours(list(map(int, input().split()))))
