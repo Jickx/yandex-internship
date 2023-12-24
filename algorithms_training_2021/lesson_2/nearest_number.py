@@ -9,7 +9,7 @@ def find_closest_number(arr, num):
 # arr = list(map(int, input().split()))
 # num = int(input())
 #
-# print(find_closest_number(arr, num))
+# find_closest_number(arr, num)
 
 def test_find_closest_number(capfd):
     input_lines = get_input(__name__)
