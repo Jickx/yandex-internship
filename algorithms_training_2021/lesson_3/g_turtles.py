@@ -1,10 +1,8 @@
 n = int(input())
-lst = []
-turtles = {tuple(map(int, input().split())) for _ in range(n)}
-turtles_sum = list(map(sum, turtles))
+result = set()
+for _ in range(n):
+    a, b = map(int, input().split())
+    if a + b == n - 1 and (a, b) not in result:
+        result.add((a, b))
 
-result = {}
-for i in turtles_sum:
-    result[i] = result.get(i, 0) + 1
-
-print(max(result.values()))
+print(len(result))
